@@ -1,7 +1,16 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const width = canvas.width;
-const height = canvas.height;
+let width = window.innerWidth;
+let height = window.innerHeight;
+canvas.width = width;
+canvas.height = height;
+
+window.addEventListener('resize', () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+});
 
 let track, player, ais = [];
 let dt = 1/60;
@@ -398,7 +407,7 @@ function render() {
             let bounce = (player.speed > 0) ? Math.sin(Date.now() / 50) * 2 : 0;
             
             // Fix for custom scale vs physical width in renderSprite
-            const fakePhysicalWidthForPlayer = 600;
+            const fakePhysicalWidthForPlayer = 180;
             const destW = (pScale * fakePhysicalWidthForPlayer * width / 2); 
             const destH = (destW * pSprite.height) / pSprite.width;
             
