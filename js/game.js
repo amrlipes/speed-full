@@ -226,15 +226,19 @@ function renderSprite(ctx, sprite, scale, destX, destY, clipY) {
     const destW = (scale * SPRITE_PHYSICAL_WIDTH * width / 2); 
     const destH = (destW * sprite.height) / sprite.width;
     
+    if (destW <= 0 || destH <= 0) return;
+    
     destX = destX - (destW / 2);
     destY = destY - destH;
     
     const clipH = clipY ? Math.max(0, destY + destH - clipY) : 0;
     
     if (clipH < destH) {
-        ctx.drawImage(sprite, 
-            0, 0, sprite.width, sprite.height - (sprite.height * clipH / destH),
-            destX, destY, destW, destH - clipH);
+        const sHeight = sprite.height - (sprite.height * clipH / destH);
+        const dHeight = destH - clipH;
+        if (sHeight > 0 && dHeight > 0) {
+            ctx.drawImage(sprite, 0, 0, sprite.width, sHeight, destX, destY, destW, dHeight);
+        }
     }
 }
 
@@ -325,7 +329,12 @@ function loop(time) {
 }
 
 function render() {
-    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = track.COLORS.SKY;
+    ctx.fillRect(0, 0, width, height);
+    
+    // Ground base to prevent black gaps
+    ctx.fillStyle = track.COLORS.DARK.grass;
+    ctx.fillRect(0, height/2, width, height/2);
 
     camera.z = player.z;
     camera.x = player.x * track.roadWidth;
