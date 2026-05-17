@@ -231,7 +231,7 @@ function drawSegment(ctx, width, lanes, x1, y1, w1, x2, y2, w2, color) {
 }
 
 function renderSprite(ctx, sprite, scale, destX, destY, clipY) {
-    const SPRITE_PHYSICAL_WIDTH = 80; 
+    const SPRITE_PHYSICAL_WIDTH = 200; 
     const destW = (scale * SPRITE_PHYSICAL_WIDTH * width / 2); 
     const destH = (destW * sprite.height) / sprite.width;
     
@@ -407,7 +407,7 @@ function render() {
             let bounce = (player.speed > 0) ? Math.sin(Date.now() / 50) * 2 : 0;
             
             // Fix for custom scale vs physical width in renderSprite
-            const fakePhysicalWidthForPlayer = 80;
+            const fakePhysicalWidthForPlayer = 200;
             const destW = (pScale * fakePhysicalWidthForPlayer * width / 2); 
             const destH = (destW * pSprite.height) / pSprite.width;
             

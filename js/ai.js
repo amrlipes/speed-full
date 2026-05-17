@@ -3,8 +3,8 @@ class AI {
         this.id = id;
         this.x = (Math.random() * 1.5) - 0.75;
         this.z = z;
-        this.speed = 10000 + Math.random() * 3000; // Base speed slightly lower than max
-        this.maxSpeed = 13000 + Math.random() * 2000;
+        this.speed = 8000 + Math.random() * 2000; // Base speed slightly lower than max
+        this.maxSpeed = 10500 + Math.random() * 2000;
         this.lap = 1;
         this.width = 80;
         this.length = 150;
