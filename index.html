@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Full</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <div id="ui-layer">
+            <div id="hud" class="hidden">
+                <div class="hud-item" style="color: #0ff;">VELOCIDADE: <span id="speed">0</span> KM/H</div>
+                <div class="hud-item" style="color: #f0f;">MARCHA: <span id="gear">1</span></div>
+                <div class="hud-item" style="color: #0ff;">POSIÇÃO: <span id="position">10</span> / 10</div>
+                <div class="hud-item" style="color: #f0f;">VOLTA: <span id="lap">1</span> / 3</div>
+            </div>
+            <div id="message-overlay" class="hidden"></div>
+            
+            <div id="menu">
+                <h1>SPEED FULL</h1>
+                <h2>Selecione seu Chassi Antigravidade</h2>
+                <div class="selection-container">
+                    <button id="prev-chassis">&lt;</button>
+                    <div class="chassis-display">
+                        <div id="chassis-name">Neon-X</div>
+                        <div id="skin-name">Skin 1 (Padrão)</div>
+                    </div>
+                    <button id="next-chassis">&gt;</button>
+                </div>
+                <div class="selection-container">
+                    <button id="prev-skin">&lt;</button>
+                    <span style="font-size: 20px;">Alternar Skin</span>
+                    <button id="next-skin">&gt;</button>
+                </div>
+                <button id="start-btn">INICIAR CORRIDA</button>
+            </div>
+        </div>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
+
+    <script src="js/track.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
